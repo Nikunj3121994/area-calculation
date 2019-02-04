@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<script>
+function calculate()
+{
+  var input1 = parseFloat(document.getElementById("input1").value);
+
+   if(input1<0){
+                 document.getElementById("warning").innerHTML = "Please enter a positive value.......";
+               }
+   if(input1>=0){
+                   document.getElementById("warning").innerHTML = "";
+                   }
+
+
+for(var i=0;i<input1unit.options.length;i++)
+    {
+	  if(input1unit.options[i].selected) input1unitid = i;
+    }
+
+scale = [1,0.3048,0.01,0.001,0.0254];
+
+var midinput1 = input1*scale[input1unitid];
+var midoutput = midinput1*midinput1;
+for(var i=0;i<valueunit.options.length;i++)
+    {
+	  if(valueunit.options[i].selected) valueunitid = i;
+	  }
+scale1 = [1,0.09290304,1E-4,1E-6,6.4516E-4];
+
+var output = midoutput/scale1[valueunitid];
+
+document.getElementById('value').value = output;
+}
+</script>
+<style>
+td,p
+{
+    font-size:20px;
+	
+}
+
+input
+{
+    font-size:14pt;
+    width:150px;
+}
+
+select,form,option{
+width:120px;
+height:30px;
+size:30px;
+font-size:14pt;
+}
+</style>
+<body>
+<p id="warning" align="center"></p>
+
+
+<table border="0" align="center" id="table">
+<tr>
+   <td align="right" class="principal" id="unitinputtable">
+    <td align="right">Square Length</td>
+    </td>
+	   
+	   <td><input id="input1" type="number" onchange="calculate()" ;autofocus /></td>
+
+	   <td><form>
+                  <select name="input1unit" id="input1unit" onchange="calculate()">
+				  
+				          <option value="1">meter</option>
+                          <option value="2">foot</option>
+        				  <option value="3">centimeter</option>
+                          <option value="4">millimeter</option>
+        				  <option value="5">inch</option>
+                          
+                  </select>
+  
+        </form>
+  </td>
+</tr>
+
+<tr>
+<td align="right" class="output1" id="unitoutputable"></td>
+<td align="right">Area</td>
+<td><input id="value" type="number" onchange="calculate()";/></td>
+<td><select name="heightunit" id="valueunit" onchange="calculate()">
+				  
+				          <option value="1">Square meter</option>
+                          <option value="2">Square foot</option>
+        				  <option value="3">Square centimeter</option>
+                          <option value="4">Square millimeter</option>
+        				  <option value="5">Square inch</option>
+                          
+    </select>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+
+<p>
+    For more calculation about area follow link given below:
+</p>
+<h1>Area</h1>
+<table>
+  <tr>
+    <th>
+
+<input type="button" value="Circle" onclick="window.location.href='http://www.calculation.net.in/area/circle/'" /></th><th>
+<input type="button" value="Ellipse" onclick="window.location.href='http://www.calculation.net.in/area/ellipse/'" /></th><th>
+<input type="button" value="Parallelogram" onclick="window.location.href='http://www.calculation.net.in/area/parallelogram/'" /></th></tr><tr><th>
+<input type="button" value="Rectangle" onclick="window.location.href='http://www.calculation.net.in/area/rectangle/'" /></th><th>
+<input type="button" value="Sector" onclick="window.location.href='http://www.calculation.net.in/area/rectangle/'" /></th><th>
+<input type="button" value="Square" onclick="window.location.href='http://www.calculation.net.in/area/square/'" /></th></tr><tr><th>
+<input type="button" value="Trapezoid" onclick="window.location.href='http://www.calculation.net.in/area/trapezoid/'" /></th><th>
+<input type="button" value="Triangle" onclick="window.location.href='http://www.calculation.net.in/area/triangle/'" /></th></tr></table>
+
+
+</table>
+</body>
+</html>
