@@ -3,11 +3,12 @@
 function calculate()
 {
   var input1 = parseFloat(document.getElementById("input1").value);
+  var input2 = parseFloat(document.getElementById("input2").value);
 
-   if(input1<0){
+   if(input1<0 || input2<0){
                  document.getElementById("warning").innerHTML = "Please enter a positive value.......";
                }
-   if(input1>=0){
+   if(input1>=0 && input2>=0){
                    document.getElementById("warning").innerHTML = "";
                    }
 
@@ -17,10 +18,18 @@ for(var i=0;i<input1unit.options.length;i++)
 	  if(input1unit.options[i].selected) input1unitid = i;
     }
 
+
+for(var i=0;i<input2unit.options.length;i++)
+    {
+	  if(input2unit.options[i].selected) input2unitid = i;
+    }
+	
 scale = [1,0.3048,0.01,0.001,0.0254];
 
 var midinput1 = input1*scale[input1unitid];
-var midoutput = midinput1*midinput1;
+var midinput2 = input2*scale[input2unitid];
+
+var midoutput = midinput1*midinput2;
 for(var i=0;i<valueunit.options.length;i++)
     {
 	  if(valueunit.options[i].selected) valueunitid = i;
@@ -59,7 +68,7 @@ font-size:14pt;
 <table border="0" align="center" id="table">
 <tr>
    <td align="right" class="principal" id="unitinputtable">
-    <td align="right">Square length </td>
+    <td align="right">Length </td>
     </td>
 	   
 	   <td><input id="input1" type="number" onchange="calculate()" ;autofocus /></td>
@@ -80,6 +89,29 @@ font-size:14pt;
 </tr>
 
 <tr>
+   <td align="right" class="principal" id="unitinputtable">
+    <td align="right">Width </td>
+    </td>
+	   
+	   <td><input id="input2" type="number" onchange="calculate()" ;autofocus /></td>
+
+	   <td><form>
+                  <select name="input2unit" id="input2unit" onchange="calculate()">
+				  
+				          <option value="1">meter</option>
+                          <option value="2">foot</option>
+        				  <option value="3">centimeter</option>
+                          <option value="4">millimeter</option>
+        				  <option value="5">inch</option>
+                          
+                  </select>
+  
+        </form>
+  </td>
+</tr>
+
+
+<tr>
 <td align="right" class="output1" id="unitoutputable"></td>
 <td align="right">Area</td>
 <td><input id="value" type="number" onchange="calculate()";/></td>
@@ -97,7 +129,6 @@ font-size:14pt;
 </table>
 </body>
 </html>
-
 <p>
     For more calculation about area follow link given below:
 </p>
